@@ -5,6 +5,7 @@ import functools
 from torch.optim import lr_scheduler
 import torch.nn.functional as F
 from torch.autograd import Variable
+import torchvision
 
 
 ###############################################################################
@@ -875,7 +876,7 @@ class VGGNet(nn.Module):
         """Select conv1_1 ~ conv5_1 activation maps."""
         super(VGGNet, self).__init__()
         self.select = ['9', '36']
-        self.vgg = torch.models.vgg19(pretrained=True).features
+        self.vgg = torchvision.models.vgg19(pretrained=True).features
 
     def forward(self, x):
         """Extract multiple convolutional feature maps."""
